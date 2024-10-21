@@ -14,6 +14,11 @@ const navLinks = [
     children: "بلاگ ها",
     path: "/blogs",
   },
+  {
+    id: 3,
+    children:  "درباره ما",
+    path: "/about",
+  },
 ];
 
 function Header() {
