@@ -9,10 +9,10 @@ function CoverImage({ title, coverImageUrl, slug }) {
         <Image
           src={coverImageUrl}
           alt={title}
-          // width={500}
-          // height={500}
+          width={400}
+          height={400}
           quality={80}
-          fill
+          
           className="object-cover object-center transition-all duration-300 ease-out hover:scale-110"
         />
       </Link>

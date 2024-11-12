@@ -5,9 +5,10 @@ import Link from "next/link";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import Avatar from "@/ui/Avatar";
 import Author from "./Author";
+import PostInteraction from "./PostInteraction";
 
 async function PostList() {
-  await new Promise((res) => setTimeout(res, 3000));
+  await new Promise((res) => setTimeout(res, 1000));
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list`);
   const {
     data: { posts },
@@ -29,16 +30,16 @@ async function PostList() {
                 </h2>
               </Link>
               {/* post author - reading time */}
-              <div className="flex items-center justify-between">
-            <Author {...post.author} />
+              <div className="flex items-center justify-between mb-2">
+                <Author {...post.author} />
                 <div className="flex items-center text-[10px] text-secondary-500">
-                    <ClockIcon className="w-4 h-4 ml-1 stroke-secondary-50" />
-                    <span className="ml-1">حواندن :</span>
-                    <span className="ml-1 leading-3">{post.readingTime}</span>
-                    <span className="">دقیقه :</span>
-
+                  <ClockIcon className="w-4 h-4 ml-1 stroke-secondary-50" />
+                  <span className="ml-1">حواندن :</span>
+                  <span className="ml-1 leading-3">{post.readingTime}</span>
+                  <span className="">دقیقه :</span>
                 </div>
               </div>
+                <PostInteraction  {...post}/>
             </div>
           </div>
         );
