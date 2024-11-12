@@ -5,7 +5,7 @@ async function CategoryList() {
   const {
     data: { categories },
   } = await res.json();
-  console.log(categories);
+
   return (
     <ul>
       {categories.map((c) => (

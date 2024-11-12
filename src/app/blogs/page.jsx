@@ -1,9 +1,17 @@
-import React from 'react'
+import PostList from "../_components/PostList";
 
-const page = () => {
+const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list`);
+const {
+  data: { posts },
+} = await res.json();
+
+
+function BlogsPage() {
   return (
-    <div>page</div>
+    <div>
+<PostList />
+    </div>
   )
 }
 
-export default page
+export default BlogsPage
