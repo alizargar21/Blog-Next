@@ -6,18 +6,15 @@ import { useRouter } from "next/navigation";
 
 function NotFound() {
   const moveBack = useMoveBack();
-  
+
   return (
     <div className="container xl:max-w-screen-xl">
       <div className="flex justify-center pt-10">
         <div>
-          <p
-           className="mb-8 text-xl font-bold text-secondary-700">
-        هیچ پستی با این مشخصات پیدا نشد !
+          <p className="mb-8 text-xl font-bold text-secondary-700">
+            هیچ پستی با این مشخصات پیدا نشد !
           </p>
-    <Link href={`/blogs`} >
-رفتن به صفحه پست؟
-    </Link>
+          <Link href={`/blogs`}>رفتن به صفحه پست؟</Link>
         </div>
       </div>
     </div>
