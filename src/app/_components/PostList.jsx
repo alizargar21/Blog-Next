@@ -24,7 +24,7 @@ async function PostList() {
             <CoverImage {...post} />
             {/* { post content} */}
             <div>
-              <Link href={`blogs/${post.slug}`}>
+              <Link href={`/blogs/${post.slug}`}>
                 <h2 className="mb-4 font-bold text-secondary-700">
                   {post.title}
                 </h2>
