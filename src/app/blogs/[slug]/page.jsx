@@ -16,7 +16,7 @@ export async function generateMetadata({ params }) {
     title: `پست ${post.title}`,
   };
 }
-async function SinglePostPage({ params }) {
+async function BlogDetail({ params }) {
   const post = await getPostBySlug(params.slug);
   if (!post) notFound();
   return (
@@ -36,4 +36,4 @@ async function SinglePostPage({ params }) {
   );
 }
 
-export default SinglePostPage;
+export default BlogDetail;

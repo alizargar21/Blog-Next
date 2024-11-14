@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import PostList from "../../_components/PostList";
 import Spinner from "@/ui/Spinner";
 
-
+export const revalidate = 20;
 
 function BlogsPage() {
   return (
