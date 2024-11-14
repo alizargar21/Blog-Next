@@ -4,17 +4,20 @@ import RHFTextField from "@/ui/RHFTextField";
 import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { resolver, yupResolver } from "@hookform/resolvers/yup";
-import { signinApi, signupApi } from "@/services/authService";
-import toast from "react-hot-toast";
+import {  yupResolver } from "@hookform/resolvers/yup";
+
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "context/AuthContext";
+import SpinnerMini from "@/ui/SpinnerMini";
+
 const schema = yup.object({
 
   email: yup.string().email("ایمیل نا معتبر است").required("ایمیل الزامی است"),
   password: yup.string().required("رمز عبور الزامی است"),
 });
 function SignInPage() {
+const {signin} = useAuth();
   const {
     register,
     handleSubmit,
@@ -26,15 +29,7 @@ function SignInPage() {
   const router = useRouter();
 
   const onSubmit = async (values) => {
-    try {
-      const { user, message } = await signinApi(values);
-      toast.success(message);
-      router.push("/");
-      console.log(user, message);
-    } catch (error) {
-      console.log(error?.response?.data?.message);
-      toast.error(error?.response?.data?.message);
-    }
+    await signin(values)
   };
 
   return (
@@ -56,9 +51,15 @@ function SignInPage() {
           errors={errors}
         />
 
-        <Button type="submit" variant="primary" className={"w-full"}>
-          تایید
-        </Button>
+<div className="flex items-center justify-center">
+          {isLoading ? (
+            <SpinnerMini />
+          ) : (
+            <Button type="submit" variant="primary" className={"w-full"}>
+              تایید
+            </Button>
+          )}
+        </div>
         
       </form>
       <Link href={"/signup"} >ثبت نام</Link>
