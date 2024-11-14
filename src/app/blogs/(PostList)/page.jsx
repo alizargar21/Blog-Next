@@ -3,7 +3,7 @@ import PostList from "../../_components/PostList";
 import Spinner from "@/ui/Spinner";
 
 export const revalidate = 20;
-
+export const experimental = true;
 function BlogsPage() {
   return (
     <div>

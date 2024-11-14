@@ -15,6 +15,7 @@ const nextConfig = {
       fullUrl: true
     }
   }
+
 };
 
 export default nextConfig;
