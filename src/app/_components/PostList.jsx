@@ -1,16 +1,21 @@
-import Image from "next/image";
+
 import React from "react";
 import CoverImage from "./CoverImage";
 import Link from "next/link";
 import { ClockIcon } from "@heroicons/react/24/outline";
-import Avatar from "@/ui/Avatar";
 import Author from "./Author";
 import PostInteraction from "./PostInteraction";
 import { getPosts } from "@/services/postServices";
+import { setCookieOnReq } from "@/utils/setCookieOnReq";
+import { cookies } from "next/headers";
+
 
 async function PostList() {
-const posts =  await getPosts()
-console.log(posts);
+
+  const cookiesStore =await cookies();
+  const options = await setCookieOnReq(cookiesStore);
+  const posts = await getPosts(options);
+
   return posts.length > 0 ? (
     <div className="grid grid-cols-12 gap-8 ">
       {posts.map((post) => {
@@ -37,7 +42,10 @@ console.log(posts);
                   <span className="">دقیقه :</span>
                 </div>
               </div>
-                <PostInteraction  {...post}/>
+              <PostInteraction 
+              // {...post} 
+              post = {post}
+              />
             </div>
           </div>
         );
