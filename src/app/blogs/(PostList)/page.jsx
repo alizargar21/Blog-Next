@@ -1,15 +1,17 @@
-import { Suspense } from "react";
+
 import PostList from "../../_components/PostList";
-import Spinner from "@/ui/Spinner";
+import { cookies } from "next/headers";
+import { setCookieOnReq } from "@/utils/setCookieOnReq";
+import { getPosts } from "@/services/postServices";
 
 // export const experimental_ppr = true;
-function BlogsPage() {
+async function BlogsPage() {
+  const cookiesStore = await cookies();
+  const options = await setCookieOnReq(cookiesStore);
+  const posts = await getPosts(options);
   return (
     <div>
-  
-      <Suspense fallback={<Spinner />}>
-        <PostList />
-      </Suspense>
+      <PostList posts={posts} />
     </div>
   );
 }

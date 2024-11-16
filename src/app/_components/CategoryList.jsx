@@ -5,12 +5,12 @@ async function CategoryList() {
   const {
     data: { categories },
   } = await res.json();
-
   return (
     <ul>
+         <Link href={`/blogs/`}>همه</Link>
       {categories.map((c) => (
         <li className="space-y-4" key={c._id}>
-          <Link href={`/blog/category/${c.slug}`}>{c.title}</Link>
+          <Link href={`/blogs/category/${c.slug}`}>{c.title}</Link>
         </li>
       ))}
     </ul>

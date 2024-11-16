@@ -81,11 +81,12 @@ export default function AuthProvider({ children }) {
       const { user, message } = await getUserApi();
 
       dispatch({ type: "user/loaded", payload: user });
-      toast.success(message);
+      // console.log(message);
+      // toast.success(message);
     } catch (error) {
       const errMsg = error?.response?.data?.message;
       dispatch({ type: "rejected", payload: errMsg });
-      //       toast.error(errMsg);
+            // toast.error(errMsg);
     }
   }
   useEffect(() => {
