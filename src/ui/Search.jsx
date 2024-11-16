@@ -15,7 +15,7 @@ export default function Search() {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    const search = e.target.search;
+    const search = e.target.search; //* => search this part meaning input name
     const searchValue = search.value;
     const newParams = new URLSearchParams(searchParams.toString());
     if (searchValue) {
@@ -35,11 +35,11 @@ export default function Search() {
         name="search"
         placeholder="جستجو ..."
         autoComplete="off"
-        className="textField__input py-3 text-xs bg-secondary-0"
+        className="py-3 text-xs textField__input bg-secondary-0"
       />
       <button
         type="submit"
-        className="absolute left-0 top-0 ml-3 flex h-full items-center"
+        className="absolute top-0 left-0 flex items-center h-full ml-3"
       >
         <MagnifyingGlassIcon className="h-4 text-secondary-400" />
       </button>

@@ -8,10 +8,11 @@ export const metadata = {
 };
 const layout = ({ children }) => {
   return (
-    <div>
-      <div className="grid items-center grid-cols-1 gap-8 mb-12 lg:grid-cols-1 text-secondary-700">
+    <div className="">
+      <div className="grid items-center grid-cols-1 gap-8 mb-12 lg:grid-cols-3 text-secondary-700">
         <h1 className="mb-12 text-lg font-bold">لیست بلاگ ها</h1>
         <Search />
+      </div>
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-12 space-y-4 lg:col-span-4 xl:col-span-3 text-secondary-500">
             <Suspense fallback={<Spinner />}>
@@ -22,7 +23,6 @@ const layout = ({ children }) => {
             {children}
           </div>
         </div>
-      </div>
     </div>
   );
 };
